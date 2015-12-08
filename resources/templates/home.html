@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="span12">
+    <form method="POST" action="/">
+      {% csrf-field %}
+      <p>
+        URL:
+        <input class="form-control"
+               type="text"
+               name="url"
+               value="{{url}}" />
+      </p>
+      {% if errors.url %}
+      <div class="alert alert-danger">{{errors.url|join}}</div>
+      {% endif %}
+      <input type="submit" class="btn btn-primary" value="get" />
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <ul class="pages">
+      {% for item in pages %}
+      <li>
+        <time>{{item.timestamp|date:"yyyy-MM-dd HH:mm"}}</time>
+        <p>{{item.url}}</p>
+        <textarea style="margin-bottom:15px;" class="form-control" rows="4" cols="50" name="content">
+          {{item.content}}
+        </textarea>
+        <button style="margin-bottom:15px;" type="button" class="btn btn-info" data-toggle="collapse" data-target="#content-{{item.timestamp|date:yyyyMMddHHmm}}">show/hide</button>
+        <div style="border-style: solid; border-color:#5bc0de; padding:10px;" id="content-{{item.timestamp|date:yyyyMMddHHmm}}" class="collapse">{{item.content|safe}}</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
