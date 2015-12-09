@@ -23,7 +23,7 @@
                  [mount "0.1.5"]
                  [migratus "0.8.8"]
                  [conman "0.2.7"]
-                 [com.h2database/h2 "1.4.188"]
+                 [org.postgresql/postgresql "9.4-1203-jdbc41"]
                  [org.immutant/web "2.1.1" :exclusions [ch.qos.logback/logback-classic]]
                  [com.carouselapps/githubpage2html "0.1.0-SNAPSHOT"]]
 
