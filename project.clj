@@ -25,7 +25,7 @@
                  [conman "0.2.7"]
                  [com.h2database/h2 "1.4.188"]
                  [org.immutant/web "2.1.1" :exclusions [ch.qos.logback/logback-classic]]
-                 [githubpage2html "0.1.0-SNAPSHOT"]]
+                 [com.carouselapps/githubpage2html "0.1.0-SNAPSHOT"]]
 
   :min-lein-version "2.0.0"
   :uberjar-name "githubpage2html-web.jar"
