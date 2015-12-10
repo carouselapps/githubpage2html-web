@@ -26,4 +26,4 @@ https://githubpage2html.herokuapp.com/
 
 ## License
 
-Copyright © 2015 FIXME
+Copyright © 2015 Carousel Apps
