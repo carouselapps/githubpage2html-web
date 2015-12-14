@@ -41,10 +41,10 @@
 (conman/bind-connection *db* "sql/queries.sql")
 
 (defn get-page [url]
-  (first (get-page- {:url url})))
+  (first (-get-page {:url url})))
 
 (defn delete-page! [id]
-  (delete-page-! {:id id}))
+  (-delete-page! {:id id}))
 
 (defn to-date [sql-date]
   (-> sql-date (.getTime) (java.util.Date.)))

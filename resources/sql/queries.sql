@@ -14,10 +14,10 @@ WHERE url = :url
 -- selects all available pages
 SELECT * FROM page ORDER BY timestamp DESC
 
--- name:get-page-
+-- name:-get-page
 -- selects page with url :url
 SELECT * FROM page WHERE url = :url
 
--- name:delete-page-!
+-- name:-delete-page!
 -- deletes page with id :id
 DELETE FROM page WHERE id = :id
