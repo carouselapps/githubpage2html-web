@@ -12,7 +12,7 @@ WHERE url = :url
 
 -- name:get-pages
 -- selects all available pages
-SELECT * FROM page
+SELECT * FROM page ORDER BY timestamp DESC
 
 -- name:get-page-
 -- selects page with url :url
