@@ -25,6 +25,14 @@
                       :content (g2html/gen-html (g2html/get-content (params :url)))))
       (redirect "/"))))
 
+(defn delete-page! [id]
+  (if-let [id (re-find  #"^\d+$" id)]
+    (do
+      (db/delete-page! (Integer/parseInt id))
+      (redirect "/"))
+    (redirect "/not-found")))
+
+
 (defn home-page [{:keys [flash]}]
   (layout/render
     "home.html"
@@ -34,8 +42,13 @@
 (defn about-page []
   (layout/render "about.html"))
 
+(defn not-found []
+  (layout/render "not-found.html"))
+
 (defroutes home-routes
   (GET "/" request (home-page request))
+  (GET "/about" [] (about-page))
+  (GET "/not-found" [] (not-found))
   (POST "/" request (save-page! request))
-  (GET "/about" [] (about-page)))
+  (GET "/delete/:id" [id] (delete-page! id)))
 

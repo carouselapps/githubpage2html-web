@@ -17,3 +17,7 @@ SELECT * FROM page
 -- name:get-page-
 -- selects page with url :url
 SELECT * FROM page WHERE url = :url
+
+-- name:delete-page-!
+-- deletes page with id :id
+DELETE FROM page WHERE id = :id

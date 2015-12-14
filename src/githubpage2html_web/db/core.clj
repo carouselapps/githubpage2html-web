@@ -43,6 +43,9 @@
 (defn get-page [url]
   (first (get-page- {:url url})))
 
+(defn delete-page! [id]
+  (delete-page-! {:id id}))
+
 (defn to-date [sql-date]
   (-> sql-date (.getTime) (java.util.Date.)))
 
