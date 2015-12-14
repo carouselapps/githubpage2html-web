@@ -9,6 +9,18 @@
             [ring.util.response :refer [redirect]]
             [githubpage2html.core :as g2html]))
 
+(defn home-page [{:keys [flash]}]
+  (layout/render
+    "home.html"
+    (merge {:pages (db/get-pages)}
+           (select-keys flash [:url :content :errors]))))
+
+(defn about-page []
+  (layout/render "about.html"))
+
+(defn not-found []
+  (layout/render "not-found.html"))
+
 (defn validate-page [params]
   (first
     (b/validate
@@ -31,19 +43,6 @@
       (db/delete-page! (Integer/parseInt id))
       (redirect "/"))
     (redirect "/not-found")))
-
-
-(defn home-page [{:keys [flash]}]
-  (layout/render
-    "home.html"
-    (merge {:pages (db/get-pages)}
-           (select-keys flash [:url :content :errors]))))
-
-(defn about-page []
-  (layout/render "about.html"))
-
-(defn not-found []
-  (layout/render "not-found.html"))
 
 (defroutes home-routes
   (GET "/" request (home-page request))
