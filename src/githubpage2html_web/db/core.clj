@@ -40,6 +40,9 @@
 
 (conman/bind-connection *db* "sql/queries.sql")
 
+(defn get-page [url]
+  (first (get-page- {:url url})))
+
 (defn to-date [sql-date]
   (-> sql-date (.getTime) (java.util.Date.)))
 

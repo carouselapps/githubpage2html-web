@@ -20,7 +20,7 @@
     (-> (redirect "/")
         (assoc :flash (assoc params :errors errors)))
     (do
-      (db/save-page!
+      ((if (db/get-page (params :url)) db/update-page! db/save-page!)
         (assoc params :timestamp (java.util.Date.)
                       :content (g2html/gen-html (g2html/get-content (params :url)))))
       (redirect "/"))))
